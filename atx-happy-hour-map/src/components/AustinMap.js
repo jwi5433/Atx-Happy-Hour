@@ -21,21 +21,38 @@ const AustinMap = () => {
 
   }, []);
 
+    const formatSpecials = (specials) => {
+      return specials.split(';').map((item, index) => <div key={index}>{item.trim()}</div>);
+    };
+  const austinBounds = [
+    [29.9, -98.1],
+    [30.7, -97.3]
+  ];
+
   return (
     <MapContainer
       center={[30.2672, -97.7431]}
       zoom={13}
+      minZoom={12}
+      maxZoom={17}
+      maxBounds={austinBounds}
       style={{ height: '100vh', width: '100vw' }}
     >
+
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {restaurants.map(restaurant => (
+     {restaurants.map(restaurant => (
         <Marker key={restaurant.id} position={[restaurant.latitude, restaurant.longitude]}>
           <Popup>
-            {restaurant.name}
-            {/* Include more details in the popup if needed */}
+            <div>
+              <h2 style={{ fontWeight: 'bold', fontSize: '1.2em' }}>{restaurant.name}</h2>
+              <p style={{ fontWeight: 'bold' }}>Hours:</p>
+              <p>{restaurant.happyHourDetails.timeFrame}</p>
+              <p style={{ fontWeight: 'bold' }}>Specials:</p>
+              {formatSpecials(restaurant.happyHourDetails.menuItems)}
+            </div>
           </Popup>
         </Marker>
       ))}

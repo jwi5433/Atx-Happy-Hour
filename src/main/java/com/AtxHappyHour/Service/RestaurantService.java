@@ -18,6 +18,10 @@ public class RestaurantService {
         return restaurantRepository.findAll();
     }
 
+    public List<Restaurant> searchRestaurantsByName(String name) {
+        return restaurantRepository.findByNameContainingIgnoreCase(name);
+    }
+
     public Optional<Restaurant> getRestaurantById(Long id) {
         return restaurantRepository.findById(id);
     }

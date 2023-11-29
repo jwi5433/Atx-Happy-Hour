@@ -26,4 +26,9 @@ public class RestaurantController {
         return restaurantService.getRestaurantById(id);
     }
 
+    @GetMapping("/search")
+    public List<Restaurant> searchRestaurantsByName(@RequestParam String name) {
+        return restaurantService.searchRestaurantsByName(name);
+    }
+
 }

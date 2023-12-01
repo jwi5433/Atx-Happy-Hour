@@ -28,7 +28,7 @@ const handleSearchChange = async (e) => {
     setSearchTerm(value);
 
     if (value.length > 2) {
-        const response = await fetch(`/api/restaurants/searchByName?name=${encodeURIComponent(value)}`);
+        const response = await fetch(`https://atxhappyhour.onrender.com/api/restaurants/searchByName?name=${encodeURIComponent(value)}`);
         const data = await response.json();
         setSuggestions(data);
     } else {
@@ -47,7 +47,7 @@ const handleSearchSubmit = (e) => {
 
 const fetchRestaurants = async () => {
     try {
-        const response = await fetch('/api/restaurants');
+        const response = await fetch('https://atxhappyhour.onrender.com/api/restaurants');
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
         }

@@ -1,18 +1,33 @@
 package com.AtxHappyHour.Model;
-
-import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
 @Data
 public class Restaurant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String name;
     private Double latitude;
     private Double longitude;
-    @Embedded
     private HappyHourDetails happyHourDetails;
+
+    public Restaurant(String name, Double latitude, Double longitude, HappyHourDetails happyHourDetails) {
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.happyHourDetails = happyHourDetails;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public HappyHourDetails getHappyHourDetails() {
+        return happyHourDetails;
+    }
 }

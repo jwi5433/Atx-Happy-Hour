@@ -3,14 +3,17 @@ package com.AtxHappyHour.Controller;
 import com.AtxHappyHour.Model.Restaurant;
 import com.AtxHappyHour.Service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/restaurants")
-@CrossOrigin(origins = "http://localhost:3000")
 public class RestaurantController {
 
     @Autowired
@@ -21,14 +24,19 @@ public class RestaurantController {
         return restaurantService.getAllRestaurantLocations();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Restaurant> getRestaurantById(@PathVariable Long id) {
-        return restaurantService.getRestaurantById(id);
+    @GetMapping("/searchByName")
+    public ResponseEntity<?> searchRestaurantsByName(@RequestParam String name) {
+        try {
+            List<Restaurant> results = restaurantService.searchRestaurantsByName(name);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
-    @GetMapping("/search")
-    public List<Restaurant> searchRestaurantsByName(@RequestParam String name) {
-        return restaurantService.searchRestaurantsByName(name);
-    }
+
 
 }

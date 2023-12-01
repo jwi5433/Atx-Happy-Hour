@@ -40,3 +40,34 @@
     transform: rotate(360deg);
   }
 }
+.Search-toggle {
+    position: fixed;
+    top: 200px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.Search-bar {
+    position: fixed;
+    top: 170px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.Autocomplete-suggestions {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    position: absolute;
+    background: white;
+    width: 200px;
+}
+
+.Autocomplete-suggestions li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.Autocomplete-suggestions li:hover {
+    background-color: #eee;
+}

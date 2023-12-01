@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import MapUpdater from './MapUpdater';
 
-const AustinMap = () => {
-  const [restaurants, setRestaurants] = useState([]);
-  const [userLocation, setUserLocation] = useState(null);
+const AustinMap = ({ restaurants, selectedLocation, selectedRestaurant }) => {
+    const markerRefs = useRef(new Map());
+    const [userLocation, setUserLocation] = useState(null);
+    const [openPopupName, setOpenPopupName] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/restaurants')
-      .then(response => response.json())
-      .then(data => setRestaurants(data));
-
+    if (selectedRestaurant) {
+        const marker = markerRefs.current.get(selectedRestaurant.name);
+        if (marker) {
+            marker.openPopup();
+        }
+    }
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setUserLocation([position.coords.latitude, position.coords.longitude]);
       });
     }
-  }, []);
+  }, [selectedLocation], [selectedRestaurant]);
 
   const restaurantIcon = new L.Icon({
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
@@ -59,14 +63,15 @@ const AustinMap = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <MapUpdater selectedLocation={selectedLocation} />
       {userLocation && (
         <Marker position={userLocation} icon={userLocationIcon}>
           <Popup>You are here.</Popup>
         </Marker>
       )}
-      {restaurants.map(restaurant => (
-        <Marker key={restaurant.id} position={[restaurant.latitude, restaurant.longitude]} icon={restaurantIcon}>
-          <Popup>
+     {restaurants.map((restaurant, index) => (
+         <Marker key={index} /* or {restaurant.name} */ position={[restaurant.latitude, restaurant.longitude]} icon={restaurantIcon} ref={(ref) => { if (ref) { markerRefs.current.set(restaurant.name, ref); } }}>
+          <Popup open={restaurant.name === openPopupName}>
             <div>
               <h2 style={{ fontWeight: 'bold', fontSize: '1.2em' }}>{restaurant.name}</h2>
               <p style={{ fontWeight: 'bold' }}>Hours:</p>

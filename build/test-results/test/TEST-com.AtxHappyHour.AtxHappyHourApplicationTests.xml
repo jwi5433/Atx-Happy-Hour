@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.AtxHappyHour.AtxHappyHourApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-12-01T19:34:45" hostname="JOHNSPC" time="0.618">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.AtxHappyHour.AtxHappyHourApplicationTests" time="0.618"/>
+  <system-out><![CDATA[Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+13:34:44.602 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.AtxHappyHour.AtxHappyHourApplicationTests]: AtxHappyHourApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:34:44.686 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.AtxHappyHour.AtxHappyHourApplication for test class com.AtxHappyHour.AtxHappyHourApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2023-12-01T13:34:44.992-06:00  INFO 45580 --- [    Test worker] c.A.AtxHappyHourApplicationTests         : Starting AtxHappyHourApplicationTests using Java 17.0.8 with PID 45580 (started by johnw in C:\Users\johnw\AtxHappyHour)
+2023-12-01T13:34:44.993-06:00  INFO 45580 --- [    Test worker] c.A.AtxHappyHourApplicationTests         : No active profile set, falling back to 1 default profile: "default"
+2023-12-01T13:34:45.939-06:00  INFO 45580 --- [    Test worker] c.A.AtxHappyHourApplicationTests         : Started AtxHappyHourApplicationTests in 1.114 seconds (process running for 2.071)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

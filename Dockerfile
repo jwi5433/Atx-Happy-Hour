@@ -5,6 +5,7 @@ COPY gradle /app/gradle
 RUN chmod +x ./gradlew
 COPY src /app/src
 RUN ./gradlew build -x test
+RUN ls -la build/libs/
 COPY build/libs/*.jar app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]

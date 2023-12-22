@@ -17,4 +17,4 @@ Link: [atxhappyhour.onrender.com](https://atxhappyhour.onrender.com)
 - It is hosted on Render, a cloud service that provides seamless hosting solutions.
 
 ## Note for Users
-The application may require a brief loading period for the pins to appear and sometimes requires a refresh, due to the limiations of the free hosting site.
+The site may require a brief loading period for the pins to appear and sometimes requires a refresh, due to the limitations of the free hosting site.

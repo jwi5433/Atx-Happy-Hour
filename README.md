@@ -2,7 +2,7 @@
 
 ATX Happy Hour Map is a web application that showcases happy hour spots across Austin, offering an interactive map with detailed information on each location. This project, featuring a Spring Boot backend and a React frontend, is designed to provide users with an engaging way to discover happy hour deals.
 
-Link: [atxhappyhour.onrender.com](https://atxhappyhour.onrender.com)
+Link: [https://atxhappyhour-frontend.onrender.com](https://atxhappyhour-frontend.onrender.com/)
 
 ## Key Features
 

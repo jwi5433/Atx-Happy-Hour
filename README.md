@@ -18,3 +18,7 @@ Link: [atxhappyhour.onrender.com](https://atxhappyhour.onrender.com)
 
 ## Note for Users
 The site may require a brief loading period for the pins to appear and sometimes requires a refresh, due to the limitations of the free hosting site.
+
+Render spins down a Free web service that goes 15 minutes without receiving inbound traffic. Render spins the service back up whenever it next receives a request to process.
+
+Spinning up a service takes a few seconds, which causes a noticeable delay for incoming requests until the service is back up and running. For example, a browser page load will hang momentarily.
